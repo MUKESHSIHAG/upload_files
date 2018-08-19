@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <?php
@@ -14,17 +15,17 @@
 	if (mysqli_num_rows($result > 0)) {
 		while ($row = mysqli_fetch_assoc($result) {
 			$id = $row['id'];
-			$sqlImg = "SELECET * FROM profileImg WHERE userid='$id'";
+			$sqlImg = "SELECET * FROM profileimg WHERE userid='$id'";
 			$resultImg = mysqli_query($conn, $sqlImg);
 			while ($rowImg = mysql_fetch_assoc($resultImg) {
-				echo "<div>";
+				echo "<div class='user-container'>";
 					if ($rowImg['status'] == 0) {
 						echo "<img src='uploads/profile".$id.".jpg'>";
 					}else{
 						echo "<img src='uploads/profiledefault.jpg'>";
 					}
-					echo $row['username'];
-				echo "<div>";
+					echo "<p>".$row['username']."</p>";
+				echo "</div>";
 			}
 		}
 	}else{
@@ -50,8 +51,6 @@
 		</form>";
 	}
 ?>
-
-	
 
 <p>Login as user!</p>
 <form action="login.php" method="POST">
